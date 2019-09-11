@@ -19,18 +19,14 @@ class App extends Component {
         glass: drink.strGlass,
         instructions: drink.strInstructions,
         image: drink.strDrinkThumb,
-        ingredient1: drink.strIngredient1,
-        ingredient2: drink.strIngredient2,
-        ingredient3: drink.strIngredient3,
-        ingredient4: drink.strIngredient4,
-        ingredient5: drink.strIngredient5,
-        ingredient6: drink.strIngredient6,
-        measure1: drink.strMeasure1,
-        measure2: drink.strMeasure2,
-        measure3: drink.strMeasure3,
-        measure4: drink.strMeasure4,
-        measure5: drink.strMeasure5,
-        measure6: drink.strMeasure6
+        ingredients: [
+          { measure: drink.strMeasure1, ingredient: drink.strIngredient1 },
+          { measure: drink.strMeasure2, ingredient: drink.strIngredient2 },
+          { measure: drink.strMeasure3, ingredient: drink.strIngredient3 },
+          { measure: drink.strMeasure4, ingredient: drink.strIngredient4 },
+          { measure: drink.strMeasure5, ingredient: drink.strIngredient5 },
+          { measure: drink.strMeasure6, ingredient: drink.strIngredient6 }
+        ]
       }))
       console.log(cleanedCocktails)
 

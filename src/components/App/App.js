@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import Header from '../Header/Header';
+import Nav from '../Nav/Nav';
+import DrinkContainer from '../DrinkContainer/DrinkContainer';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
+    this.state ={
+      popularCocktails: []
+    }
   }
 
   componentDidMount = async () => {
@@ -28,6 +34,7 @@ class App extends Component {
           { measure: drink.strMeasure6, ingredient: drink.strIngredient6 }
         ]
       }))
+      this.setState({ popularCocktails: cleanedCocktails })
       console.log(cleanedCocktails)
 
     } catch(error) {
@@ -38,7 +45,9 @@ class App extends Component {
   render() {
     return (
       <main>
-        <h1>Hello</h1>
+        <Header />
+        <Nav />
+        <DrinkContainer drinks={this.state.popularCocktails}/>
       </main>
     );
   }

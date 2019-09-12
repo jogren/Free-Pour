@@ -11,3 +11,8 @@ export const setCurrentCocktails = cocktails => ({
   type: 'SET_CURRENT_COCKTAILS',
   cocktails
 });
+
+export const toggleFavorite = cocktails => ({
+  type: 'TOGGLE_FAVORITE',
+  cocktails
+});

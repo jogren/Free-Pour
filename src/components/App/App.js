@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
+import Header from '../Header/Header';
+import Nav from '../Nav/Nav';
+import DrinkContainer from '../DrinkContainer/DrinkContainer';
+import DrinkDetails from '../DrinkDetails/DrinkDetails';
+import { connect } from 'react-redux';
+import { hideSelectedDrink } from '../../actions';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
+    this.state ={
+      popularCocktails: []
+    }
   }
 
   componentDidMount = async () => {
@@ -28,6 +37,7 @@ class App extends Component {
           { measure: drink.strMeasure6, ingredient: drink.strIngredient6 }
         ]
       }))
+      this.setState({ popularCocktails: cleanedCocktails })
       console.log(cleanedCocktails)
 
     } catch(error) {
@@ -36,12 +46,24 @@ class App extends Component {
   }
 
   render() {
+    const { toggleSelectedDrink, hideSelectedDrink } = this.props
     return (
       <main>
-        <h1>Hello</h1>
+        <Header />
+        {toggleSelectedDrink.name && (<DrinkDetails toggleSelectedDrink={toggleSelectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
+        <Nav />
+        <DrinkContainer drinks={this.state.popularCocktails}/>
       </main>
     );
   }
 }
 
-export default App;
+const mapStateToProps = ({ toggleSelectedDrink }) => ({
+  toggleSelectedDrink,
+});
+
+const mapDispatchToProps = dispatch => ({
+  hideSelectedDrink: () => dispatch(hideSelectedDrink())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

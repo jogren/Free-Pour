@@ -22,6 +22,7 @@ class Drink extends Component {
         <img className="Drink_image" src={image} alt={name}/>
         <h3>{name}</h3>
         <button onClick={this.handleShowMore}>How to Make</button>
+        <button>Favorite this Drink!</button>
       </section>
     )
   }

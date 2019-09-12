@@ -9,10 +9,6 @@ class Nav extends Component {
     }
   }
 
-  // newSearch = (e) => {
-  //   console.log('test')
-  // }
-
   render() {
     const { getCocktailsByGenre } = this.props
     return (

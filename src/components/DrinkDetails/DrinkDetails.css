@@ -6,6 +6,7 @@
   width: 70%;
   height: 500px;
   overflow: scroll;
+  margin-top: 20px;
 }
 
 .Details_button-container {
@@ -21,7 +22,7 @@
 .Details_img-ingredients {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .Details_section p {
@@ -44,6 +45,10 @@
 .Details-ingredients p {
   font-size: 18px;
   margin-bottom: 3px;
+}
+
+.Details-instructions {
+  margin: 0px 15px;
 }
 
 h6 {

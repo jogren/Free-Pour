@@ -22,7 +22,7 @@ const DrinkDetails = ({ selectedDrink, hideSelectedDrink}) => {
           {ingredientsList}
         </div>
       </div>
-      <p>{selectedDrink.instructions}</p>
+      <p className="Details-instructions">{selectedDrink.instructions}</p>
     </section>
   );
 }

@@ -23,7 +23,7 @@ class Drink extends Component {
     const { image, name } = this.props
     return (
       <section className="Drink_section">
-        <img className="Drink_image" src={image}/>
+        <img className="Drink_image" src={image} alt={name}/>
         <h3>{name}</h3>
         <button onClick={this.handleShowMore}>How to Make</button>
       </section>

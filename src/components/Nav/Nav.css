@@ -3,4 +3,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: #FF6961;
+  height: 50px;
+  padding: 10px;
 }

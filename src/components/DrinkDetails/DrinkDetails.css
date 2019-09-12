@@ -1,0 +1,55 @@
+.Details_section {
+  position: fixed;
+  left: 17%;
+  background-color: #FFF;
+  opacity: 0.95;
+  width: 70%;
+  height: 500px;
+  overflow: scroll;
+}
+
+.Details_button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Details_section img {
+  height: 200px;
+}
+
+.Details_img-ingredients {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.Details_section p {
+  text-align: center;
+}
+
+.Details-name {
+  font-size: 42px;
+}
+
+.Details-glass {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.Details-ingredients {
+  padding: 10px;
+}
+
+.Details-ingredients p {
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+h6 {
+  font-size: 24px;
+  padding-bottom: 3px;
+  border-bottom: 3px solid black;
+  margin-bottom: 3px;
+  text-align: center;
+}

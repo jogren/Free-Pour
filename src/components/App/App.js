@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
+import DrinkDetails from '../DrinkDetails/DrinkDetails';
 import { connect } from 'react-redux';
 import { hideSelectedDrink } from '../../actions';
 import './App.css';
@@ -45,18 +46,12 @@ class App extends Component {
   }
 
   render() {
-    const { toggleSelectedDrink } = this.props
+    const { toggleSelectedDrink, hideSelectedDrink } = this.props
     return (
       <main>
         <Header />
+        {toggleSelectedDrink.name && (<DrinkDetails toggleSelectedDrink={toggleSelectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
         <Nav />
-        {toggleSelectedDrink !== {} &&
-          <div className="main_div-more-info">
-            <h4>{toggleSelectedDrink.name}</h4>
-            <p>{toggleSelectedDrink.instructions}</p>
-            <button onClick={this.props.hideSelectedDrink}>x</button>
-          </div>
-        }
         <DrinkContainer drinks={this.state.popularCocktails}/>
       </main>
     );

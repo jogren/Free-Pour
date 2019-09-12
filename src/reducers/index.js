@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { selectedDrink } from './selectedDrink';
+import { toggleSelectedDrink } from './selectedDrink';
 
 const rootReducer = combineReducers({
-  selectedDrink,
+  toggleSelectedDrink,
 });
 
 export default rootReducer;

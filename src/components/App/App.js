@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
 import { connect } from 'react-redux';
+import { hideSelectedDrink } from '../../actions';
 import './App.css';
 
 class App extends Component {
@@ -44,15 +45,16 @@ class App extends Component {
   }
 
   render() {
-    const { selectedDrink } = this.props
+    const { toggleSelectedDrink } = this.props
     return (
       <main>
         <Header />
         <Nav />
-        {selectedDrink !== {} &&
-          <div>
-            <h4>{selectedDrink.name}</h4>
-            <p>{selectedDrink.instructions}</p>
+        {toggleSelectedDrink !== {} &&
+          <div className="main_div-more-info">
+            <h4>{toggleSelectedDrink.name}</h4>
+            <p>{toggleSelectedDrink.instructions}</p>
+            <button onClick={this.props.hideSelectedDrink}>x</button>
           </div>
         }
         <DrinkContainer drinks={this.state.popularCocktails}/>
@@ -61,8 +63,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ selectedDrink }) => ({
-  selectedDrink,
+const mapStateToProps = ({ toggleSelectedDrink }) => ({
+  toggleSelectedDrink,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  hideSelectedDrink: () => dispatch(hideSelectedDrink())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,7 +1,9 @@
-export const selectedDrink = (state = {}, action) => {
+export const toggleSelectedDrink = (state = {}, action) => {
   switch(action.type) {
-    case 'SELECT_DRINK':
+    case 'SHOW_SELECT_DRINK':
       return action.targetDrink;
+    case 'HIDE_SELECTED_DRINK':
+      return {}
     default:
       return state;
   }

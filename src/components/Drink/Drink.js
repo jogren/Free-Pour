@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { fetchMoreDrinkInfo } from '../../apiCalls/apiCalls';
 import { connect } from 'react-redux';
-import { selectDrink } from '../../actions';
+import { showSelectDrink } from '../../actions';
 import './Drink.css';
 
 class Drink extends Component {
@@ -15,12 +15,11 @@ class Drink extends Component {
 
   handleShowMore = async () => {
     const response = await fetchMoreDrinkInfo(this.props.name)
-    this.props.selectDrink(response)
+    this.props.showSelectDrink(response)
     // this.setState({ selectedDrink: response })
   }
 
   render() {
-    console.log(this.state.selectedDrink)
     const { image, name } = this.props
     return (
       <section className="Drink_section">
@@ -32,12 +31,12 @@ class Drink extends Component {
   }
 }
 
-const mapStateToProps = ({ selectedDrink }) => ({
-  selectedDrink,
+const mapStateToProps = ({ toggleSelectedDrink }) => ({
+  toggleSelectedDrink,
 });
 
 const mapDispatchToProps = dispatch => ({
-  selectDrink: (targetDrink) => dispatch(selectDrink(targetDrink))
+  showSelectDrink: (targetDrink) => dispatch(showSelectDrink(targetDrink))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Drink);

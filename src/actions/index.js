@@ -1,4 +1,4 @@
-export const selectDrink = targetDrink => {
+export const selectDrink = targetDrink => ({
   type: 'SELECT_DRINK',
   targetDrink
-}
+})

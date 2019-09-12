@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
+import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
@@ -43,14 +44,25 @@ class App extends Component {
   }
 
   render() {
+    const { selectedDrink } = this.props
     return (
       <main>
         <Header />
         <Nav />
+        {selectedDrink !== {} &&
+          <div>
+            <h4>{selectedDrink.name}</h4>
+            <p>{selectedDrink.instructions}</p>
+          </div>
+        }
         <DrinkContainer drinks={this.state.popularCocktails}/>
       </main>
     );
   }
 }
 
-export default App;
+const mapStateToProps = ({ selectedDrink }) => ({
+  selectedDrink,
+});
+
+export default connect(mapStateToProps)(App);

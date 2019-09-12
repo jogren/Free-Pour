@@ -7,16 +7,12 @@ import './Drink.css';
 class Drink extends Component {
   constructor() {
     super();
-    this.state = {
-      selectedDrink: {}
-    }
 
   }
 
   handleShowMore = async () => {
     const response = await fetchMoreDrinkInfo(this.props.name)
     this.props.showSelectDrink(response)
-    // this.setState({ selectedDrink: response })
   }
 
   render() {
@@ -26,17 +22,14 @@ class Drink extends Component {
         <img className="Drink_image" src={image} alt={name}/>
         <h3>{name}</h3>
         <button onClick={this.handleShowMore}>How to Make</button>
+        <button>Favorite this Drink!</button>
       </section>
     )
   }
 }
 
-const mapStateToProps = ({ toggleSelectedDrink }) => ({
-  toggleSelectedDrink,
-});
-
 const mapDispatchToProps = dispatch => ({
   showSelectDrink: (targetDrink) => dispatch(showSelectDrink(targetDrink))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Drink);
+export default connect(null, mapDispatchToProps)(Drink);

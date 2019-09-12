@@ -4,66 +4,63 @@ import Nav from '../Nav/Nav';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
 import DrinkDetails from '../DrinkDetails/DrinkDetails';
 import { connect } from 'react-redux';
-import { hideSelectedDrink } from '../../actions';
+import { hideSelectedDrink, setCurrentCocktails } from '../../actions';
+import { fetchPopularCocktails, fetchCocktailsByGenre } from '../../apiCalls/apiCalls';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
-    this.state ={
-      popularCocktails: []
-    }
   }
 
   componentDidMount = async () => {
-    const url = 'https://www.thecocktaildb.com/api/json/v2/8673533/popular.php';
     try {
-      const response = await fetch(url);
-      if(!response.ok) {
-        throw new Error('There was an error fetch your data')
-      }
-      const popularCocktails = await response.json()
-      const cleanedCocktails = popularCocktails.drinks.map(drink => ({
-        name: drink.strDrink,
-        glass: drink.strGlass,
-        instructions: drink.strInstructions,
-        image: drink.strDrinkThumb,
-        ingredients: [
-          { measure: drink.strMeasure1, ingredient: drink.strIngredient1 },
-          { measure: drink.strMeasure2, ingredient: drink.strIngredient2 },
-          { measure: drink.strMeasure3, ingredient: drink.strIngredient3 },
-          { measure: drink.strMeasure4, ingredient: drink.strIngredient4 },
-          { measure: drink.strMeasure5, ingredient: drink.strIngredient5 },
-          { measure: drink.strMeasure6, ingredient: drink.strIngredient6 }
-        ]
-      }))
-      this.setState({ popularCocktails: cleanedCocktails })
-      console.log(cleanedCocktails)
-
+      const popularCocktails = await fetchPopularCocktails();
+      this.props.setCurrentCocktails(popularCocktails)
     } catch(error) {
       throw new Error(error.message)
     }
   }
 
+  getCocktailsByGenre = async (type) => {
+    if(type === 'popular') {
+      try {
+        const popularCocktails = await fetchPopularCocktails();
+        this.props.setCurrentCocktails(popularCocktails)
+      } catch (error) {
+        throw new Error(error.message)
+      }
+    } else {
+      try {
+        const cocktailsByGenre = await fetchCocktailsByGenre(type)
+        this.props.setCurrentCocktails(cocktailsByGenre);
+      } catch(error) {
+        throw new Error(error.message)
+      }
+    }
+  }
+
   render() {
-    const { toggleSelectedDrink, hideSelectedDrink } = this.props
+    const { selectedDrink, hideSelectedDrink, currentCocktails } = this.props
     return (
       <main>
         <Header />
-        {toggleSelectedDrink.name && (<DrinkDetails toggleSelectedDrink={toggleSelectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
-        <Nav />
-        <DrinkContainer drinks={this.state.popularCocktails}/>
+        {selectedDrink.name && (<DrinkDetails selectedDrink={selectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
+        <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
+        <DrinkContainer drinks={currentCocktails}/>
       </main>
     );
   }
 }
 
-const mapStateToProps = ({ toggleSelectedDrink }) => ({
-  toggleSelectedDrink,
+const mapStateToProps = ({ selectedDrink, currentCocktails }) => ({
+  selectedDrink,
+  currentCocktails
 });
 
 const mapDispatchToProps = dispatch => ({
-  hideSelectedDrink: () => dispatch(hideSelectedDrink())
+  hideSelectedDrink: () => dispatch(hideSelectedDrink()),
+  setCurrentCocktails: cocktails => dispatch(setCurrentCocktails(cocktails))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -4,7 +4,7 @@ import './DrinkContainer.css';
 
 const DrinkContainer = ({ drinks }) => {
   let drinkList = drinks.map((drink, index) => {
-    return <Drink key={index} image={drink.image} name={drink.name} />
+    return <Drink key={index} image={drink.strDrinkThumb} name={drink.strDrink} />
   })
 
   return(

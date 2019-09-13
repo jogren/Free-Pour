@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import GameBoardContainer from '../GameBoardContainer/GameBoardContainer';
 import { connect } from 'react-redux';
 import { fetchAllIngredients } from '../../apiCalls/apiCalls';
-
 import './GameBoard.css';
 
 class GameBoard extends Component {
@@ -29,10 +28,10 @@ class GameBoard extends Component {
   }
 
   render() {
-    let ingredientList = this.state.allIngredients.map((ingredient, index) => {
-      return <option key={index} value={ingredient.strIngredient1}/>
+    let addAdditionalIngredients = [...this.state.allIngredients, 'Coca-Cola',]
+    let ingredientList = addAdditionalIngredients.map((ingredient, index) => {
+      return <option key={index} value={ingredient}/>
     })
-    console.log(ingredientList)
     const { favoriteCocktails } = this.props;
     return (
       <main>

@@ -42,12 +42,15 @@ class App extends Component {
 
   render() {
     const { selectedDrink, hideSelectedDrink, currentCocktails } = this.props
+    let blur = selectedDrink.name ? 'blur-filter' : ''
     return (
       <main>
-        <Header />
         {selectedDrink.name && (<DrinkDetails selectedDrink={selectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
-        <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
-        <DrinkContainer drinks={currentCocktails}/>
+        <div className={blur}>
+          <Header/>
+          <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
+          <DrinkContainer drinks={currentCocktails}/>
+        </div>
       </main>
     );
   }

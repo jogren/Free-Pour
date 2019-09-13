@@ -1,3 +1,9 @@
 * {
   margin: 0;
 }
+
+.blur-filter {
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+  z-index: 1;
+}

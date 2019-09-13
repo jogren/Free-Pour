@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCocktailsBySearch } from '../../apiCalls/apiCalls';
 import { setCurrentCocktails } from '../../actions';
-
+import { NavLink } from 'react-router-dom';
 import './Nav.css';
 
 class Nav extends Component {
@@ -60,7 +60,9 @@ class Nav extends Component {
           <option value="popular">Popular</option>
         </select>
         <p>Favorites {favoriteCocktails.length}</p>
-        <button>Quiz me on my favorites</button>
+        <NavLink to='/game-play'>
+          <button>Quiz me on my favorites</button>
+        </NavLink>
       </nav>
     );
   }

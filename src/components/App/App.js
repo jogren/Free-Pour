@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
 import DrinkDetails from '../DrinkDetails/DrinkDetails';
+import GameBoard from '../GameBoard/GameBoard';
 import { hideSelectedDrink, setCurrentCocktails } from '../../actions';
 import { fetchPopularCocktails, fetchCocktailsByGenre } from '../../apiCalls/apiCalls';
 import { connect } from 'react-redux';
@@ -44,13 +46,23 @@ class App extends Component {
     const { selectedDrink, hideSelectedDrink, currentCocktails } = this.props
     let blur = selectedDrink.name ? 'blur-filter' : ''
     return (
-      <main>
-        {selectedDrink.name && (<DrinkDetails selectedDrink={selectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
-        <div className={blur}>
-          <Header/>
-          <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
-          <DrinkContainer drinks={currentCocktails}/>
-        </div>
+      <main className="App_main">
+        <Route exact path="/" render={() =>
+        <section>
+          {selectedDrink.name && (<DrinkDetails selectedDrink={selectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
+          <div className={blur}>
+            <Header/>
+            <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
+            <DrinkContainer drinks={currentCocktails}/>
+          </div>
+        </section>
+        } />
+        <Route path="/game-play" render={() => 
+          <section>
+            <Header />
+            <GameBoard />
+          </section>
+        }/>
       </main>
     );
   }

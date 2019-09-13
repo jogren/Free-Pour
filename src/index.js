@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 
@@ -12,7 +13,9 @@ const store = createStore(rootReducer, composeWithDevTools())
 
 ReactDOM.render(
 <Provider store={store}>
-  <App />
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 </Provider>,
 document.getElementById('root'));
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-    const { selectedDrink, hideSelectedDrink, currentCocktails } = this.props
+    const { selectedDrink, hideSelectedDrink, currentCocktails, favoriteCocktails } = this.props
     let blur = selectedDrink.name ? 'blur-filter' : ''
     return (
       <main className="App_main">
@@ -57,20 +57,21 @@ class App extends Component {
           </div>
         </section>
         } />
-        <Route path="/game-play" render={() => 
-          <section>
-            <Header />
-            <GameBoard />
-          </section>
-        }/>
+        <Route path="/game-play" render={() =>
+            <section>
+              <Header />
+              <GameBoard favoriteCocktails={this.props.favoriteCocktails}/>
+            </section>
+          }/>
       </main>
     );
   }
 }
 
-const mapStateToProps = ({ selectedDrink, currentCocktails }) => ({
+const mapStateToProps = ({ selectedDrink, currentCocktails, favoriteCocktails }) => ({
   selectedDrink,
-  currentCocktails
+  currentCocktails,
+  favoriteCocktails
 });
 
 const mapDispatchToProps = dispatch => ({

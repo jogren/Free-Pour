@@ -31,19 +31,29 @@ export const fetchCocktailsByGenre = async (type) => {
 }
 
 export const fetchCocktailsBySearch = async (text) => {
-  console.log(text)
   const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${text}`
   try {
     const response = await fetch(url)
     if(!response.ok) {
-      console.log('in reponse false')
       throw new Error('There was an issue fetching your data by name')
     }
     const cocktails = await response.json();
-    console.log(cocktails)
     return cocktails.drinks
   } catch(error) {
-    console.log('in error')
+    throw new Error(error.message)
+  }
+}
+
+export const fetchAllIngredients = async () => {
+  const url = '  https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error('There was an issue fetching all ingredients')
+    }
+    const ingredients = await response.json();
+    return ingredients.drinks
+  } catch(error) {
     throw new Error(error.message)
   }
 }

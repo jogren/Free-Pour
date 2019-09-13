@@ -10,7 +10,8 @@ class Nav extends Component {
     super();
     this.state = {
       search: '',
-      searchHasErrored: ''
+      searchHasErrored: '',
+      favoritesHasErrored: ''
     }
   }
 
@@ -60,9 +61,9 @@ class Nav extends Component {
           <option value="popular">Popular</option>
         </select>
         <p>Favorites {favoriteCocktails.length}</p>
-        <NavLink to='/game-play'>
+        {favoriteCocktails.length > 0 && <NavLink to='/game-play'>
           <button>Quiz me on my favorites</button>
-        </NavLink>
+        </NavLink>}
       </nav>
     );
   }

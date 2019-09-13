@@ -10,3 +10,8 @@
 .Drink_image {
   height: 100px;
 }
+
+.Drink_image-favorite {
+  height: 50px;
+  width: 45px;
+}

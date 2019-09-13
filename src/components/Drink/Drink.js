@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { fetchMoreDrinkInfo } from '../../apiCalls/apiCalls';
 import { connect } from 'react-redux';
 import { showSelectDrink, toggleFavorite } from '../../actions';
+import favoriteSvg from '../../images/favorite.png';
+import favoriteActiveSvg from '../../images/favorite-active.png';
 import './Drink.css';
 
 class Drink extends Component {
   constructor() {
     super();
-
   }
 
   handleShowMore = async () => {
@@ -28,15 +29,16 @@ class Drink extends Component {
   }
 
   render() {
-    const { image, name } = this.props;
+    const { image, name, favoriteCocktails } = this.props;
+    let favoriteImg = favoriteCocktails.find(favorite => favorite.name === name) ? favoriteActiveSvg : favoriteSvg;
     return (
       <section className="Drink_section">
         <img className="Drink_image" src={image} alt={name}/>
         <h3>{name}</h3>
         <button onClick={this.handleShowMore}>How to Make</button>
-        <button onClick={() => this.toggleFavorite({name})}>Favorite this Drink!</button>
+        <img className="Drink_image-favorite" src={favoriteImg} onClick={() => this.toggleFavorite({ name })}/>
       </section>
-    )
+    );
   }
 }
 

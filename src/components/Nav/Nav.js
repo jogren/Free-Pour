@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Nav.css';
 
 class Nav extends Component {
@@ -10,7 +11,7 @@ class Nav extends Component {
   }
 
   render() {
-    const { getCocktailsByGenre } = this.props
+    const { getCocktailsByGenre, favoriteCocktails } = this.props
     return (
       <nav>
         <div>
@@ -27,10 +28,14 @@ class Nav extends Component {
           <option value="whiskey">Whiskey</option>
           <option value="popular">Popular</option>
         </select>
-        <p>Favorites</p>
+        <p>Favorites {favoriteCocktails.length}</p>
       </nav>
     );
   }
 }
 
-export default Nav;
+const mapStateToProps = ({ favoriteCocktails }) => ({
+  favoriteCocktails
+});
+
+export default connect(mapStateToProps)(Nav);

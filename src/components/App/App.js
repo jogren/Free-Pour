@@ -3,9 +3,9 @@ import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
 import DrinkDetails from '../DrinkDetails/DrinkDetails';
-import { connect } from 'react-redux';
 import { hideSelectedDrink, setCurrentCocktails } from '../../actions';
 import { fetchPopularCocktails, fetchCocktailsByGenre } from '../../apiCalls/apiCalls';
+import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {

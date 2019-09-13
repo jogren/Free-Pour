@@ -36,7 +36,7 @@ class Drink extends Component {
         <img className="Drink_image" src={image} alt={name}/>
         <h3>{name}</h3>
         <button onClick={this.handleShowMore}>How to Make</button>
-        <img className="Drink_image-favorite" src={favoriteImg} onClick={() => this.toggleFavorite({ name })}/>
+        <img className="Drink_image-favorite" alt="favorite this drink" src={favoriteImg} onClick={() => this.toggleFavorite({ name })}/>
       </section>
     );
   }

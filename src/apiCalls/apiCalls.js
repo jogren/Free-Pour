@@ -19,7 +19,7 @@ export const fetchCocktailsByGenre = async (type) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${type}`
   try {
     const response = await fetch(url)
-    if (!response.ok) {
+    if(!response.ok) {
       throw new Error('There was an issue fetching your data by genre')
     }
     const cocktails = await response.json();
@@ -27,6 +27,24 @@ export const fetchCocktailsByGenre = async (type) => {
   } catch (error) {
     throw new Error(error.message)
 
+  }
+}
+
+export const fetchCocktailsBySearch = async (text) => {
+  console.log(text)
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${text}`
+  try {
+    const response = await fetch(url)
+    if(!response.ok) {
+      console.log('in reponse false')
+      throw new Error('There was an issue fetching your data by name')
+    }
+    const cocktails = await response.json();
+    console.log(cocktails)
+    return cocktails.drinks
+  } catch(error) {
+    console.log('in error')
+    throw new Error(error.message)
   }
 }
 

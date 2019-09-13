@@ -3,9 +3,9 @@ import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import DrinkContainer from '../DrinkContainer/DrinkContainer';
 import DrinkDetails from '../DrinkDetails/DrinkDetails';
-import { connect } from 'react-redux';
 import { hideSelectedDrink, setCurrentCocktails } from '../../actions';
 import { fetchPopularCocktails, fetchCocktailsByGenre } from '../../apiCalls/apiCalls';
+import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
@@ -42,12 +42,15 @@ class App extends Component {
 
   render() {
     const { selectedDrink, hideSelectedDrink, currentCocktails } = this.props
+    let blur = selectedDrink.name ? 'blur-filter' : ''
     return (
       <main>
-        <Header />
         {selectedDrink.name && (<DrinkDetails selectedDrink={selectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
-        <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
-        <DrinkContainer drinks={currentCocktails}/>
+        <div className={blur}>
+          <Header/>
+          <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
+          <DrinkContainer drinks={currentCocktails}/>
+        </div>
       </main>
     );
   }

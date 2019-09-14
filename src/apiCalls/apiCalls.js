@@ -71,12 +71,12 @@ export const fetchMoreDrinkInfo = async (name) => {
       instructions: drink.strInstructions,
       image: drink.strDrinkThumb,
       ingredients: [
-        { measure: drink.strMeasure1, ingredient: drink.strIngredient1 },
-        { measure: drink.strMeasure2, ingredient: drink.strIngredient2 },
-        { measure: drink.strMeasure3, ingredient: drink.strIngredient3 },
-        { measure: drink.strMeasure4, ingredient: drink.strIngredient4 },
-        { measure: drink.strMeasure5, ingredient: drink.strIngredient5 },
-        { measure: drink.strMeasure6, ingredient: drink.strIngredient6 }
+        { measure: drink.strMeasure1, ingredient: drink.strIngredient1, guessed: false },
+        { measure: drink.strMeasure2, ingredient: drink.strIngredient2, guessed: false },
+        { measure: drink.strMeasure3, ingredient: drink.strIngredient3, guessed: false },
+        { measure: drink.strMeasure4, ingredient: drink.strIngredient4, guessed: false },
+        { measure: drink.strMeasure5, ingredient: drink.strIngredient5, guessed: false },
+        { measure: drink.strMeasure6, ingredient: drink.strIngredient6, guessed: false }
       ]
     }))
     return cleanedCocktail[0]

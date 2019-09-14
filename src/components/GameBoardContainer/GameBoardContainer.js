@@ -1,16 +1,12 @@
 import React from 'react';
+import GameBoardCard from '../GameBoardCard/GameBoardCard';
 import './GameBoardContainer.css';
 
 const GameBoardContainer = ({ currentDrink }) => {
-
   console.log(currentDrink)
   let ingredientDivs = currentDrink.ingredients.map((ingredient, index) => {
     if(ingredient.ingredient) {
-      return (
-        <div key={index}>
-          <p>{ingredient.ingredient}</p>
-        </div>
-      );
+      return <GameBoardCard key={index} index={index} ingredient={ingredient}/>
     }
   });
 

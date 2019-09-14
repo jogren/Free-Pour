@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import GameBoardContainer from '../GameBoardContainer/GameBoardContainer';
 import { connect } from 'react-redux';
 import { fetchAllIngredients } from '../../apiCalls/apiCalls';
+import { toggleFavorite } from '../../actions';
+import { NavLink } from 'react-router-dom';
 import './GameBoard.css';
 
 class GameBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      roundCounter: this.props.favoriteCocktails.length - 1,
+      roundCounter: 0,
       ingredientSearch: '',
-      allIngredients: []
+      allIngredients: [],
+      roundFinished: false
     }
   }
 
@@ -23,38 +26,95 @@ class GameBoard extends Component {
     }
   }
 
+  handleSubmitGuess = () => {
+    let { roundCounter, roundFinished, ingredientSearch } = this.state;
+    const { favoriteCocktails } = this.props;
+    let isCorrect = favoriteCocktails[roundCounter].ingredients.find(ingredient => ingredient.ingredient.toLowerCase().includes(ingredientSearch.toLowerCase()))
+    if(isCorrect) {
+      isCorrect.guessed = true
+    }
+    console.log(isCorrect)
+    console.log(favoriteCocktails[roundCounter])
+    let allTrue = favoriteCocktails[roundCounter].ingredients.every(ingredient => ingredient.guessed || ingredient.ingredient === '')
+    if (allTrue && this.state.roundCounter + 1 >= this.props.favoriteCocktails.length) {
+      this.state.roundFinished = true
+      console.log(this.state.roundFinished)
+      console.log(this.state.roundCounter)
+      console.log(favoriteCocktails.length)
+    } else if (allTrue) {
+      this.state.roundCounter++
+      
+    }
+    this.setState({ ingredientSearch: '' })
+  }
+
   handleIngredientSearch = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  resetGame = () => {
+    let { favoriteCocktails, toggleFavorite } = this.props;
+    let favoriteCocktailsReset = favoriteCocktails.map(cocktail => {
+        return {
+          name: cocktail.name,
+          glass: cocktail.glass,
+          image: cocktail.image,
+          instructions: cocktail.instructions,
+          ingredients: cocktail.ingredients.map(ingredient => {
+            return {
+              measure: ingredient.measure,
+              ingredient: ingredient.ingredient,
+              guessed: false
+            }
+          })
+        }
+      })
+    toggleFavorite(favoriteCocktailsReset)
+    this.setState({ roundCounter: 0, roundFinished: false })
+    console.log(favoriteCocktailsReset)
+    console.log('reset game logic')
+  }
+
   render() {
-    let addAdditionalIngredients = [...this.state.allIngredients, 'Coca-Cola',]
+    const { favoriteCocktails } = this.props;
+    console.log(favoriteCocktails)
+    const { roundCounter, ingredientSearch, allIngredients } = this.state;
+    let addAdditionalIngredients = [...allIngredients, 'Coca-Cola', 'Olive', 'Soda Water', 'Cherry', 'Mint', 'Blue Curacao',]
     let ingredientList = addAdditionalIngredients.map((ingredient, index) => {
       return <option key={index} value={ingredient}/>
     })
-    const { favoriteCocktails } = this.props;
     return (
-      <main>
-        <h3>What's in a {favoriteCocktails[this.state.roundCounter].name}?</h3>
+      <main className="GameBoard_main">
+        <h3>What's in a {favoriteCocktails[roundCounter].name}?</h3>
         <GameBoardContainer currentDrink={favoriteCocktails[this.state.roundCounter]}/>
         <section className="Board_section-ingredients">
           <input 
             type="text"
             placeholder="Search for Ingredients..."
             name="ingredientSearch"
-            value={this.state.ingredientSearch}
+            value={ingredientSearch}
             onChange={(e) => this.handleIngredientSearch(e)}
             list="ingredient-list"
           />
           <datalist id="ingredient-list">{ingredientList}</datalist>
+          <button onClick={this.handleSubmitGuess}>Submit Guess</button>
         </section>
+        { this.state.roundFinished && (
+          <div>
+            <h3>Congrats! You reviewed all of your favorites</h3> 
+            <NavLink to="/">
+              <button onClick={this.resetGame}>Keep studying!</button>
+            </NavLink>
+          </div>
+        )}
       </main>
     )
   }
 }
 
-const mapStateToProps = ({ }) => ({
+const mapDispatchToProps = dispatch => ({
+  toggleFavorite: (cocktails) => dispatch(toggleFavorite(cocktails))
 })
 
-export default connect(mapStateToProps)(GameBoard);
+export default connect(null, mapDispatchToProps)(GameBoard);
 

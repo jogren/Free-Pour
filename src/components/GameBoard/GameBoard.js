@@ -95,7 +95,7 @@ class GameBoard extends Component {
           <datalist id="ingredient-list">{ingredientList}</datalist>
           <button onClick={this.handleSubmitGuess}>Submit Guess</button>
         </section>
-        { this.state.roundFinished && (
+        {this.state.roundFinished && (
           <div>
             <h3>Congrats! You reviewed all of your favorites</h3> 
             <NavLink to="/">

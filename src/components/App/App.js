@@ -60,7 +60,7 @@ class App extends Component {
         <Route path="/game-play" render={() =>
             <section>
               <Header />
-              <GameBoard favoriteCocktails={this.props.favoriteCocktails}/>
+              <GameBoard favoriteCocktails={favoriteCocktails}/>
             </section>
           }/>
       </main>

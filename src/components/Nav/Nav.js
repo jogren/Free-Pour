@@ -1,12 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchCocktailsBySearch } from '../../apiCalls/apiCalls';
+import { setCurrentCocktails } from '../../actions';
+import { NavLink } from 'react-router-dom';
 import './Nav.css';
 
 class Nav extends Component {
   constructor() {
     super();
     this.state = {
-      search: ''
+      search: '',
+      searchHasErrored: '',
+      favoritesHasErrored: ''
+    }
+  }
+
+  handleSearch = e => {
+    this.setState({ searchHasErrored: '' })
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  getCocktailsBySearch = async () => {
+    try {
+      const searchedCocktails = await fetchCocktailsBySearch(this.state.search)
+      if (searchedCocktails === null) {
+        this.setState({ searchHasErrored: 'Please try again!' })
+      } else {
+        console.log(searchedCocktails)
+        this.props.setCurrentCocktails(searchedCocktails)
+      }
+      this.setState({ search: '' })
+    } catch(error) {
+      throw new Error(error.message)
     }
   }
 
@@ -15,8 +40,15 @@ class Nav extends Component {
     return (
       <nav>
         <div>
-          <input type="search"  />
-          <button>Submit</button>
+          <input 
+            type="search"
+            placeholder="Search for a drink..."
+            name="search"
+            value={this.state.search}
+            onChange={(e) => this.handleSearch(e)}
+          />
+          <button onClick={this.getCocktailsBySearch}>Submit</button>
+          { this.state.searchHasErrored && <p>Please try again</p>}
         </div>
         <select onChange={(e) => getCocktailsByGenre(e.target.value)} className="select-container">
           <option value="">Select Genre:</option>
@@ -29,6 +61,9 @@ class Nav extends Component {
           <option value="popular">Popular</option>
         </select>
         <p>Favorites {favoriteCocktails.length}</p>
+        {favoriteCocktails.length > 0 && <NavLink to='/game-play'>
+          <button>Quiz me on my favorites</button>
+        </NavLink>}
       </nav>
     );
   }
@@ -38,4 +73,8 @@ const mapStateToProps = ({ favoriteCocktails }) => ({
   favoriteCocktails
 });
 
-export default connect(mapStateToProps)(Nav);
+const mapDispatchToProps = dispatch => ({
+  setCurrentCocktails: cocktails => dispatch(setCurrentCocktails(cocktails))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

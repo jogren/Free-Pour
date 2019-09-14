@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchAllIngredients } from '../../apiCalls/apiCalls';
 import { toggleFavorite } from '../../actions';
 import { NavLink } from 'react-router-dom';
+import wrongAnswerImage from '../../images/wrong-answer.png';
 import './GameBoard.css';
 
 class GameBoard extends Component {
@@ -13,7 +14,8 @@ class GameBoard extends Component {
       roundCounter: 0,
       ingredientSearch: '',
       allIngredients: [],
-      roundFinished: false
+      roundFinished: false,
+      wrongAnswerError: ''
     }
   }
 
@@ -27,23 +29,20 @@ class GameBoard extends Component {
   }
 
   handleSubmitGuess = () => {
-    let { roundCounter, roundFinished, ingredientSearch } = this.state;
+    let { roundCounter, ingredientSearch } = this.state;
     const { favoriteCocktails } = this.props;
     let isCorrect = favoriteCocktails[roundCounter].ingredients.find(ingredient => ingredient.ingredient.toLowerCase().includes(ingredientSearch.toLowerCase()))
     if(isCorrect) {
       isCorrect.guessed = true
+    } else {
+      this.setState({ wrongAnswerError: 'wrong' })
+      setTimeout(() => { this.setState({ wrongAnswerError: '' }) }, 500);
     }
-    console.log(isCorrect)
-    console.log(favoriteCocktails[roundCounter])
     let allTrue = favoriteCocktails[roundCounter].ingredients.every(ingredient => ingredient.guessed || ingredient.ingredient === '')
-    if (allTrue && this.state.roundCounter + 1 >= this.props.favoriteCocktails.length) {
+    if (allTrue && roundCounter + 1 >= favoriteCocktails.length) {
       this.state.roundFinished = true
-      console.log(this.state.roundFinished)
-      console.log(this.state.roundCounter)
-      console.log(favoriteCocktails.length)
     } else if (allTrue) {
       this.state.roundCounter++
-      
     }
     this.setState({ ingredientSearch: '' })
   }
@@ -71,16 +70,13 @@ class GameBoard extends Component {
       })
     toggleFavorite(favoriteCocktailsReset)
     this.setState({ roundCounter: 0, roundFinished: false })
-    console.log(favoriteCocktailsReset)
-    console.log('reset game logic')
   }
 
   render() {
     const { favoriteCocktails } = this.props;
-    console.log(favoriteCocktails)
     const { roundCounter, ingredientSearch, allIngredients } = this.state;
-    let addAdditionalIngredients = [...allIngredients, 'Coca-Cola', 'Olive', 'Soda Water', 'Cherry', 'Mint', 'Blue Curacao',]
-    let ingredientList = addAdditionalIngredients.map((ingredient, index) => {
+    let addMoreIngredientOptions = [...allIngredients, 'Coca-Cola', 'Olive', 'Soda Water', 'Cherry', 'Mint', 'Blue Curacao', 'Angostura Bitters']
+    let ingredientList = addMoreIngredientOptions.map((ingredient, index) => {
       return <option key={index} value={ingredient}/>
     })
     return (
@@ -107,6 +103,7 @@ class GameBoard extends Component {
             </NavLink>
           </div>
         )}
+        {this.state.wrongAnswerError && <img src={wrongAnswerImage}/> }
       </main>
     )
   }

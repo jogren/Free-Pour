@@ -1,5 +1,3 @@
-.Game-card_div {
-  height: 50px;
-  margin-bottom: 10px;
-  background-color: grey;
+.GameBoardContainer_section {
+  width: 100%
 }

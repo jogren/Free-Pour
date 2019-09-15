@@ -1,3 +1,68 @@
-.correct-guess {
-  border: 3px solid yellow;
+.Game-card_div {
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.incorrect-guess {
+  border: 2px solid black;
+}
+
+.correct-guess {
+  background-color: black;
+  color: #FFF;
+}
+
+.Game-card_div p {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.GameBoardCard_section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Board_section-ingredients button {
+  border-radius: 0px 5px 5px 0px;
+  height: 99%;
+  padding-top: 2px;
+}
+
+.Board_section-ingredients button:hover {
+  background-color: black;
+  color: #FFF;
+}
+
+.Board_section-ingredients {
+  height: 30px;
+}
+
+.div-round-finished {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-round-finished h4 {
+  margin: 30px 0px 10px 0px;
+  font-size: 32px
+}
+
+.div-round-finished button {
+  width: 180px;
+  height: 35px;
+  font-size: 16px;
+}
+
+.div-round-finished button:hover {
+  background-color: black;
+  color: #FFF;
+}
+
+

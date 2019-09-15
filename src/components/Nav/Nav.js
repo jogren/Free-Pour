@@ -37,33 +37,35 @@ export class Nav extends Component {
   render() {
     const { getCocktailsByGenre, favoriteCocktails } = this.props
     return (
-      <nav>
-        <div>
-          <input 
-            type="search"
-            placeholder="Search for a drink..."
-            name="search"
-            value={this.state.search}
-            onChange={(e) => this.handleSearch(e)}
-          />
-          <button onClick={this.getCocktailsBySearch}>Submit</button>
-          { this.state.searchHasErrored && <p>Please try again</p>}
-        </div>
-        <select onChange={(e) => getCocktailsByGenre(e.target.value)} className="select-container">
-          <option value="">Select Genre:</option>
-          <option value="vodka">Vodka</option>
-          <option value="bourbon">Bourbon</option>
-          <option value="tequila">Tequila</option>
-          <option value="gin">Gin</option>
-          <option value="rum">Rum</option>
-          <option value="whiskey">Whiskey</option>
-          <option value="popular">Popular</option>
-        </select>
-        <p>Favorites {favoriteCocktails.length}</p>
-        {favoriteCocktails.length > 0 && <NavLink to='/game-play'>
-          <button>Quiz me on my favorites</button>
-        </NavLink>}
-      </nav>
+        <nav>
+          <div className="Nav_div">
+            <input 
+              className="Nav_input-search"
+              autoComplete="off"
+              type="search"
+              placeholder="Search for a drink..."
+              name="search"
+              value={this.state.search}
+              onChange={(e) => this.handleSearch(e)}
+              />
+            <button onClick={this.getCocktailsBySearch}>Submit</button>
+            { this.state.searchHasErrored && <p>Please Check your Spelling!</p>}
+          </div>
+          <select onChange={(e) => getCocktailsByGenre(e.target.value)} className="select-container">
+            <option value="">Select Genre:</option>
+            <option value="vodka">Vodka</option>
+            <option value="bourbon">Bourbon</option>
+            <option value="tequila">Tequila</option>
+            <option value="gin">Gin</option>
+            <option value="rum">Rum</option>
+            <option value="whiskey">Whiskey</option>
+            <option value="popular">Popular</option>
+          </select>
+          <p className="Nav_p-favorites">Favorites {favoriteCocktails.length}</p>
+          {favoriteCocktails.length > 0 && <NavLink to='/game-play'>
+            <button className="button-quiz-favorites">Quiz me on my favorites</button>
+          </NavLink>}
+        </nav>
     );
   }
 }

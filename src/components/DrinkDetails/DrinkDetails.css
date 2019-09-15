@@ -8,6 +8,8 @@
   overflow: scroll;
   margin-top: 9%;
   z-index: 99;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .Details_button-container {
@@ -16,14 +18,26 @@
   justify-content: flex-end;
 }
 
+.Details_button-container button {
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 0px 0px 0px 5px;
+}
+
 .Details_section img {
   height: 200px;
+  border-radius: 50%;
 }
 
 .Details_img-ingredients {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .Details_section p {

@@ -81,12 +81,13 @@ export class GameBoard extends Component {
     })
     return (
       <main className="GameBoard_main">
-        <h3>What's in a {favoriteCocktails[roundCounter].name}?</h3>
+        <h3>Can you guess what's in a {favoriteCocktails[roundCounter].name}?</h3>
         <GameBoardContainer currentDrink={favoriteCocktails[this.state.roundCounter]}/>
         <section className="Board_section-ingredients">
           <input 
+            className="GameBoard_input"
             type="text"
-            placeholder="Search for Ingredients..."
+            placeholder="Guess an ingredient..."
             name="ingredientSearch"
             value={ingredientSearch}
             onChange={(e) => this.handleIngredientSearch(e)}
@@ -95,9 +96,12 @@ export class GameBoard extends Component {
           <datalist id="ingredient-list">{ingredientList}</datalist>
           <button onClick={this.handleSubmitGuess}>Submit Guess</button>
         </section>
+        <NavLink to="/">
+          <button className="button-home" onClick={this.resetGame}>Back to Home Page</button>
+        </NavLink>
         {this.state.roundFinished && (
-          <div>
-            <h3>Congrats! You reviewed all of your favorites</h3> 
+          <div className="div-round-finished">
+            <h4>Congrats! You reviewed all of your favorites!</h4> 
             <NavLink to="/">
               <button onClick={this.resetGame}>Keep studying!</button>
             </NavLink>

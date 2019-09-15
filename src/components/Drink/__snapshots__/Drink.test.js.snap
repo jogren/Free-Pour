@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drink should take a snapshot when passed the correct data 1`] = `
+<section
+  className="Drink_section"
+>
+  <img
+    alt="Mojito"
+    className="Drink_image"
+    src="image.png"
+  />
+  <h3>
+    Mojito
+  </h3>
+  <button
+    onClick={[Function]}
+  >
+    How to Make
+  </button>
+  <img
+    alt="favorite this drink"
+    className="Drink_image-favorite"
+    onClick={[Function]}
+    src="favorite.png"
+  />
+</section>
+`;

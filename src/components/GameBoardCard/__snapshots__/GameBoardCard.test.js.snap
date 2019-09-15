@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameBoardCard should take a snapshot when passed the correct data 1`] = `
+<section>
+  <div
+    className="Game-card_div incorrect-guess"
+  >
+    <p>
+      1
+    </p>
+  </div>
+</section>
+`;

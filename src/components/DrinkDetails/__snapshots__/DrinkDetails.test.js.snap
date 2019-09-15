@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrinkDetails should take a snapshot when passed the correct data 1`] = `
+<section
+  className="Details_section"
+>
+  <div
+    className="Details_button-container"
+  >
+    <button
+      onClick={[MockFunction]}
+    >
+      x
+    </button>
+  </div>
+  <p
+    className="Details-name"
+  >
+    Mojito
+  </p>
+  <p
+    className="Details-glass"
+  >
+    Highball glass
+  </p>
+  <div
+    className="Details_img-ingredients"
+  >
+    <img
+      alt="Mojito"
+      src="image.png"
+    />
+    <div
+      className="Details-ingredients"
+    >
+      <h6>
+        Ingredients!
+      </h6>
+      <p
+        key="0"
+      >
+        2-3 oz
+         
+        Light rum
+      </p>
+      <p
+        key="1"
+      >
+        leaves
+         
+        mint
+      </p>
+      <p
+        key="2"
+      >
+        2tbsp
+         
+        sugar
+      </p>
+    </div>
+  </div>
+  <p
+    className="Details-instructions"
+  >
+    Muddle mint leaves...
+  </p>
+</section>
+`;

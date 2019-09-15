@@ -2,6 +2,7 @@ import React from 'react';
 import './GameBoardCard.css';
 
 const GameBoardCard = ({ ingredient, index }) => {
+  console.log(ingredient)
 
   return (
     <section>

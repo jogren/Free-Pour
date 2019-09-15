@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameBoardContainer should take a snapshot when passed the correct data 1`] = `
+<section>
+  <GameBoardCard
+    index={0}
+    ingredient={
+      Object {
+        "guessed": false,
+        "ingredient": "Vodka",
+        "measure": "2-3 oz",
+      }
+    }
+    key="0"
+  />
+  <GameBoardCard
+    index={1}
+    ingredient={
+      Object {
+        "guessed": false,
+        "ingredient": "Ginger Ale",
+        "measure": "5oz",
+      }
+    }
+    key="1"
+  />
+  <GameBoardCard
+    index={2}
+    ingredient={
+      Object {
+        "guessed": false,
+        "ingredient": "Lime Juice",
+        "measure": "2tbsp",
+      }
+    }
+    key="2"
+  />
+</section>
+`;

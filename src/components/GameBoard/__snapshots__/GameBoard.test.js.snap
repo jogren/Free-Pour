@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameBoard should take a snapshot when passed the correct data 1`] = `
+<main
+  className="GameBoard_main"
+>
+  <h3>
+    What's in a 
+    Moscow Mules
+    ?
+  </h3>
+  <GameBoardContainer
+    currentDrink={
+      Object {
+        "glass": "Copper Mug",
+        "image": "image2.png",
+        "ingredients": Array [
+          Object {
+            "guessed": false,
+            "ingredient": "Vodka",
+            "measure": "2-3 oz",
+          },
+          Object {
+            "guessed": false,
+            "ingredient": "Ginger Ale",
+            "measure": "5oz",
+          },
+          Object {
+            "guessed": false,
+            "ingredient": "Lime Juice",
+            "measure": "2tbsp",
+          },
+        ],
+        "instructions": "Combine ingredients...",
+        "name": "Moscow Mules",
+      }
+    }
+  />
+  <section
+    className="Board_section-ingredients"
+  >
+    <input
+      list="ingredient-list"
+      name="ingredientSearch"
+      onChange={[Function]}
+      placeholder="Search for Ingredients..."
+      type="text"
+      value=""
+    />
+    <datalist
+      id="ingredient-list"
+    >
+      <option
+        key="0"
+        value="Coca-Cola"
+      />
+      <option
+        key="1"
+        value="Olive"
+      />
+      <option
+        key="2"
+        value="Soda Water"
+      />
+      <option
+        key="3"
+        value="Cherry"
+      />
+      <option
+        key="4"
+        value="Mint"
+      />
+      <option
+        key="5"
+        value="Blue Curacao"
+      />
+      <option
+        key="6"
+        value="Angostura Bitters"
+      />
+    </datalist>
+    <button
+      onClick={[Function]}
+    >
+      Submit Guess
+    </button>
+  </section>
+</main>
+`;

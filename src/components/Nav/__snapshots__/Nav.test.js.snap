@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav should take a snapshot when passed the correct data 1`] = `
+<nav>
+  <div>
+    <input
+      name="search"
+      onChange={[Function]}
+      placeholder="Search for a drink..."
+      type="search"
+      value=""
+    />
+    <button
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>
+  <select
+    className="select-container"
+    onChange={[Function]}
+  >
+    <option
+      value=""
+    >
+      Select Genre:
+    </option>
+    <option
+      value="vodka"
+    >
+      Vodka
+    </option>
+    <option
+      value="bourbon"
+    >
+      Bourbon
+    </option>
+    <option
+      value="tequila"
+    >
+      Tequila
+    </option>
+    <option
+      value="gin"
+    >
+      Gin
+    </option>
+    <option
+      value="rum"
+    >
+      Rum
+    </option>
+    <option
+      value="whiskey"
+    >
+      Whiskey
+    </option>
+    <option
+      value="popular"
+    >
+      Popular
+    </option>
+  </select>
+  <p>
+    Favorites 
+    1
+  </p>
+  <NavLink
+    to="/game-play"
+  >
+    <button>
+      Quiz me on my favorites
+    </button>
+  </NavLink>
+</nav>
+`;

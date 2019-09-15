@@ -5,8 +5,5 @@ exports[`Header should take a snapshot when passed the correct data 1`] = `
   <h1>
     Free Pour
   </h1>
-  <h2>
-    Welcome, UserName
-  </h2>
 </header>
 `;

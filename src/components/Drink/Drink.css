@@ -1,21 +1,58 @@
 .Drink_section {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: grey;
-  margin: 10px;
-  padding: 10px;
+  margin: 10px 0px 20px 0px;
+  padding: 20px 10px 15px 10px;
   position: relative;
+  width: 80%;
+  border-bottom: 3px solid black;
+  margin: auto;
 }
 
 .Drink_image {
-  height: 100px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .Drink_image-favorite {
   height: 50px;
   width: 45px;
   position: absolute;
-  top: 5px;
+  top: -53px;
+  right: 24px;
+}
+
+.Drink_section label:hover {
+  transform: scale(1.1) perspective(100px);
+  transition: all 0.5s ease;
+}
+
+.Drink_section h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.Drink_section label {
+  cursor: pointer;
+  font-size: 10px;
+  position: absolute;
+  top: 75px;
   right: 5px;
+}
+
+.Drink_section button {
+  font-size: 13px;
+  font-weight: 700;
+  border: 2px solid black;
+}
+
+.Drink_section button:hover {
+  background-color: black;
+  color: #FFF;
+  border: none;
+  opacity: 0.9;
 }

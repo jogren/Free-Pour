@@ -1,0 +1,17 @@
+.GameBoard_main h3 {
+  text-align: center;
+}
+
+.GameBoard_input {
+  height: 30px;
+  border: 2px solid black;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 5px 0px 0px 5px;
+  margin-top: 2px;
+  padding-left: 5px;
+}
+
+.GameBoard_input::placeholder { 
+  color: black;
+}

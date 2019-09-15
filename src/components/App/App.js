@@ -48,8 +48,10 @@ export class App extends Component {
         <section>
           {selectedDrink.name && (<DrinkDetails selectedDrink={selectedDrink} hideSelectedDrink={hideSelectedDrink} />) }
           <div className={blur}>
-            <Header/>
-            <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
+            <div className="header-and-nav">
+              <Header/>
+              <Nav getCocktailsByGenre={this.getCocktailsByGenre}/>
+            </div>
             <DrinkContainer drinks={currentCocktails}/>
           </div>
         </section>

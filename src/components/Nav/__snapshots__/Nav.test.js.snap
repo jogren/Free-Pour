@@ -2,12 +2,15 @@
 
 exports[`Nav should take a snapshot when passed the correct data 1`] = `
 <nav>
-  <div>
+  <div
+    className="Nav_div"
+  >
     <input
+      autoComplete="off"
+      className="Nav_input-search"
       name="search"
       onChange={[Function]}
       placeholder="Search for a drink..."
-      type="search"
       value=""
     />
     <button
@@ -61,14 +64,18 @@ exports[`Nav should take a snapshot when passed the correct data 1`] = `
       Popular
     </option>
   </select>
-  <p>
+  <p
+    className="Nav_p-favorites"
+  >
     Favorites 
     1
   </p>
   <NavLink
     to="/game-play"
   >
-    <button>
+    <button
+      className="button-quiz-favorites"
+    >
       Quiz me on my favorites
     </button>
   </NavLink>

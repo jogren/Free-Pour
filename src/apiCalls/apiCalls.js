@@ -45,13 +45,14 @@ export const fetchCocktailsBySearch = async (text) => {
 }
 
 export const fetchAllIngredients = async () => {
-  const url = '  https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+  const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
   try {
     const response = await fetch(url)
     if (!response.ok) {
       throw new Error('There was an issue fetching all ingredients')
     }
     const ingredients = await response.json();
+    console.log(ingredients)
     return ingredients.drinks.map(drink => drink.strIngredient1)
   } catch(error) {
     throw new Error(error.message)

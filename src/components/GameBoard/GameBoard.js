@@ -22,6 +22,7 @@ export class GameBoard extends Component {
   componentDidMount = async () => {
     try {
       const allIngredients = await fetchAllIngredients();
+      console.log(allIngredients)
       this.setState({ allIngredients: allIngredients })
     } catch (error) {
       throw new Error(error.message)
@@ -75,7 +76,7 @@ export class GameBoard extends Component {
   render() {
     const { favoriteCocktails } = this.props;
     const { roundCounter, ingredientSearch, allIngredients } = this.state;
-    let addMoreIngredientOptions = [...allIngredients, 'Coca-Cola', 'Olive', 'Soda Water', 'Cherry', 'Mint', 'Blue Curacao', 'Angostura Bitters']
+    let addMoreIngredientOptions = [...allIngredients, 'Coca-Cola', 'Olive', 'Soda Water', 'Cherry', 'Mint', 'Blue Curacao', 'Angostura Bitters', 'Campari']
     let ingredientList = addMoreIngredientOptions.map((ingredient, index) => {
       return <option key={index} value={ingredient}/>
     })
@@ -94,7 +95,7 @@ export class GameBoard extends Component {
             list="ingredient-list"
           />
           <datalist id="ingredient-list">{ingredientList}</datalist>
-          <button onClick={this.handleSubmitGuess}>Submit Guess</button>
+          <button onClick={this.handleSubmitGuess} disabled={!this.state.ingredientSearch}>Submit Guess</button>
         </section>
         <NavLink to="/">
           <button className="button-home" onClick={this.resetGame}>Back to Home Page</button>
@@ -107,7 +108,7 @@ export class GameBoard extends Component {
             </NavLink>
           </div>
         )}
-        {this.state.wrongAnswerError && <img src={wrongAnswerImage}/> }
+        {this.state.wrongAnswerError && <img src={wrongAnswerImage} className="wrong-answer-error"/> }
       </main>
     )
   }

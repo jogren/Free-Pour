@@ -49,7 +49,7 @@ export class Nav extends Component {
               onChange={(e) => this.handleSearch(e)}
               />
             <button onClick={this.getCocktailsBySearch}>Submit</button>
-            { this.state.searchHasErrored && <p>Please try again</p>}
+            { this.state.searchHasErrored && <p>Please Check your Spelling!</p>}
           </div>
           <select onChange={(e) => getCocktailsByGenre(e.target.value)} className="select-container">
             <option value="">Select Genre:</option>

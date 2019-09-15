@@ -35,7 +35,7 @@ export class Drink extends Component {
         <button onClick={this.handleShowMore}>See How to Make</button>
         <label onClick={() => this.toggleFavorite({ name })}>
           <img className="Drink_image-favorite" alt="favorite this drink" src={favoriteImg}/>
-          Click to Favorite!
+          Click Here to Favorite!
         </label>
       </section>
     );

@@ -12,7 +12,15 @@ nav {
 }
 
 .Nav_div {
-  height: 30px
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.Nav_div p {
+  padding-left: 5px;
+  color: red;
+  font-weight: 700;
 }
 
 input[type="search"] {

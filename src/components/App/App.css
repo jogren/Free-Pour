@@ -15,4 +15,5 @@
 
 .header-and-nav {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://image.shutterstock.com/image-vector/vector-linear-illustration-bottles-glasses-260nw-667294063.jpg');
+  padding: 5px;
 }

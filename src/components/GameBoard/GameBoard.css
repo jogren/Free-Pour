@@ -1,4 +1,13 @@
+.GameBoard_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
 .GameBoard_main h3 {
+  margin: 25px;
+  font-size: 24px;
   text-align: center;
 }
 
@@ -14,4 +23,15 @@
 
 .GameBoard_input::placeholder { 
   color: black;
+}
+
+.button-home {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.button-home:hover {
+  background-color: black;
+  color: #FFF;
 }

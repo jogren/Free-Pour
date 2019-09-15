@@ -96,6 +96,9 @@ export class GameBoard extends Component {
           <datalist id="ingredient-list">{ingredientList}</datalist>
           <button onClick={this.handleSubmitGuess}>Submit Guess</button>
         </section>
+        <NavLink to="/">
+          <button className="button-home" onClick={this.resetGame}>Back to Home Page</button>
+        </NavLink>
         {this.state.roundFinished && (
           <div className="div-round-finished">
             <h4>Congrats! You reviewed all of your favorites!</h4> 

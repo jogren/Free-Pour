@@ -9,7 +9,7 @@ const GameBoardCard = ({ ingredient, index }) => {
         <p>{index + 1}</p>
       </div>}
       {ingredient.guessed && <div className="Game-card_div correct-guess">
-        <p>{ingredient.ingredient} - {ingredient.measure}</p>
+        <p>{ingredient.ingredient}{ingredient.measure ? ` - ${ingredient.measure}` : ''}</p>
       </div> }
     </section>
 

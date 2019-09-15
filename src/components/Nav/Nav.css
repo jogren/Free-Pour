@@ -9,12 +9,16 @@ nav {
 .Nav_p-favorites {
   color: white;
   font-weight: 700;
+  text-align: center;
 }
 
 .Nav_div {
   height: 30px;
   display: flex;
   align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .Nav_div button {
@@ -63,9 +67,5 @@ nav button:hover {
   background: none;
   color: #FFF;
   border: 2px solid #FFF
-}
-
-.button-quiz-favorites {
-  /* margin-left: 20% */
 }
 

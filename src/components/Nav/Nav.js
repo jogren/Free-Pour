@@ -5,7 +5,7 @@ import { setCurrentCocktails } from '../../actions';
 import { NavLink } from 'react-router-dom';
 import './Nav.css';
 
-class Nav extends Component {
+export class Nav extends Component {
   constructor() {
     super();
     this.state = {
@@ -26,7 +26,6 @@ class Nav extends Component {
       if (searchedCocktails === null) {
         this.setState({ searchHasErrored: 'Please try again!' })
       } else {
-        console.log(searchedCocktails)
         this.props.setCurrentCocktails(searchedCocktails)
       }
       this.setState({ search: '' })

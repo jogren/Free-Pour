@@ -10,10 +10,7 @@ import { fetchPopularCocktails, fetchCocktailsByGenre } from '../../apiCalls/api
 import { connect } from 'react-redux';
 import './App.css';
 
-class App extends Component {
-  constructor() {
-    super();
-  }
+export class App extends Component {
 
   componentDidMount = async () => {
     try {
@@ -58,17 +55,17 @@ class App extends Component {
         </section>
         } />
         <Route path="/game-play" render={() =>
-            <section>
-              <Header />
-              <GameBoard favoriteCocktails={favoriteCocktails}/>
-            </section>
-          }/>
+          <section>
+            <Header />
+            <GameBoard favoriteCocktails={favoriteCocktails}/>
+          </section>
+        }/>
       </main>
     );
   }
 }
 
-const mapStateToProps = ({ selectedDrink, currentCocktails, favoriteCocktails }) => ({
+export const mapStateToProps = ({ selectedDrink, currentCocktails, favoriteCocktails }) => ({
   selectedDrink,
   currentCocktails,
   favoriteCocktails

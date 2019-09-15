@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrinkContainer should take a snapshot when passed the correct data 1`] = `
+<section
+  className="DrinkContainer_section"
+>
+  <Connect(Drink)
+    image="image.png"
+    key="0"
+    name="Mojito"
+  />
+  <Connect(Drink)
+    image="image2.png"
+    key="1"
+    name="Moscow Mule"
+  />
+</section>
+`;

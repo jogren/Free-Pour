@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import wrongAnswerImage from '../../images/wrong-answer.png';
 import './GameBoard.css';
 
-class GameBoard extends Component {
+export class GameBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {

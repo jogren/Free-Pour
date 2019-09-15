@@ -6,10 +6,7 @@ import favoriteSvg from '../../images/favorite.png';
 import favoriteActiveSvg from '../../images/favorite-active.png';
 import './Drink.css';
 
-class Drink extends Component {
-  constructor() {
-    super();
-  }
+export class Drink extends Component {
 
   handleShowMore = async () => {
     const response = await fetchMoreDrinkInfo(this.props.name)

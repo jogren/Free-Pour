@@ -42,7 +42,6 @@ export class Nav extends Component {
             <input 
               className="Nav_input-search"
               autoComplete="off"
-              type="search"
               placeholder="Search for a drink..."
               name="search"
               value={this.state.search}

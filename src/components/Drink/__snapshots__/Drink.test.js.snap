@@ -15,13 +15,17 @@ exports[`Drink should take a snapshot when passed the correct data 1`] = `
   <button
     onClick={[Function]}
   >
-    How to Make
+    See How to Make
   </button>
-  <img
-    alt="favorite this drink"
-    className="Drink_image-favorite"
+  <label
     onClick={[Function]}
-    src="favorite.png"
-  />
+  >
+    <img
+      alt="favorite this drink"
+      className="Drink_image-favorite"
+      src="favorite.png"
+    />
+    Click Here to Favorite!
+  </label>
 </section>
 `;

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GameBoardContainer should take a snapshot when passed the correct data 1`] = `
-<section>
+<section
+  className="GameBoardContainer_section"
+>
   <GameBoardCard
     index={0}
     ingredient={

@@ -22,6 +22,7 @@ export class GameBoard extends Component {
   componentDidMount = async () => {
     try {
       const allIngredients = await fetchAllIngredients();
+      console.log(allIngredients)
       this.setState({ allIngredients: allIngredients })
     } catch (error) {
       throw new Error(error.message)

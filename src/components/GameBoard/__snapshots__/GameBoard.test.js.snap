@@ -5,7 +5,7 @@ exports[`GameBoard should take a snapshot when passed the correct data 1`] = `
   className="GameBoard_main"
 >
   <h3>
-    What's in a 
+    Can you guess what's in a 
     Moscow Mules
     ?
   </h3>
@@ -40,10 +40,11 @@ exports[`GameBoard should take a snapshot when passed the correct data 1`] = `
     className="Board_section-ingredients"
   >
     <input
+      className="GameBoard_input"
       list="ingredient-list"
       name="ingredientSearch"
       onChange={[Function]}
-      placeholder="Search for Ingredients..."
+      placeholder="Guess an ingredient..."
       type="text"
       value=""
     />
@@ -85,5 +86,15 @@ exports[`GameBoard should take a snapshot when passed the correct data 1`] = `
       Submit Guess
     </button>
   </section>
+  <NavLink
+    to="/"
+  >
+    <button
+      className="button-home"
+      onClick={[Function]}
+    >
+      Back to Home Page
+    </button>
+  </NavLink>
 </main>
 `;

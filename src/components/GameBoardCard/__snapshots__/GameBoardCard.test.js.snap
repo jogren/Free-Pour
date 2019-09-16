@@ -8,6 +8,7 @@ exports[`GameBoardCard should take a snapshot when passed the correct data 1`] =
     className="Game-card_div incorrect-guess"
   >
     <p>
+      Ingredient 
       1
     </p>
   </div>

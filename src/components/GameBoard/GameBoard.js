@@ -82,7 +82,7 @@ export class GameBoard extends Component {
     return (
       <main className="GameBoard_main">
         <h3>Can you guess what's in a {favoriteCocktails[roundCounter].name}?</h3>
-        <section className="Board_section-ingredients">
+        <form className="Board_section-ingredients">
           <input 
             className="GameBoard_input"
             type="text"
@@ -94,7 +94,7 @@ export class GameBoard extends Component {
           />
           <datalist id="ingredient-list">{ingredientList}</datalist>
           <button onClick={this.handleSubmitGuess} disabled={!this.state.ingredientSearch}>Submit Guess</button>
-        </section>
+        </form>
         <GameBoardContainer currentDrink={favoriteCocktails[this.state.roundCounter]}/>
         <NavLink to="/">
           <button className="button-home" onClick={this.resetGame}>Back to Home Page</button>

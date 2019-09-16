@@ -20,7 +20,8 @@ export class Nav extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  getCocktailsBySearch = async () => {
+  getCocktailsBySearch = async (e) => {
+    e.preventDefault()
     try {
       const searchedCocktails = await fetchCocktailsBySearch(this.state.search)
       if (searchedCocktails === null) {
@@ -38,7 +39,7 @@ export class Nav extends Component {
     const { getCocktailsByGenre, favoriteCocktails } = this.props
     return (
         <nav>
-            <div className="Nav_div">
+            <form className="Nav_form">
               <input 
                 className="Nav_input-search"
                 autoComplete="off"
@@ -47,9 +48,9 @@ export class Nav extends Component {
                 value={this.state.search}
                 onChange={(e) => this.handleSearch(e)}
                 />
-            <button onClick={this.getCocktailsBySearch} disabled={!this.state.search}>Submit</button>
-              { this.state.searchHasErrored && <p>Please Check your Spelling!</p>}
-            </div>
+              <button onClick={(e) => this.getCocktailsBySearch(e)} disabled={!this.state.search}>Submit</button>
+              {this.state.searchHasErrored && <p className="Nav_form-error">Please Check your Spelling!</p>}
+            </form>
             <select onChange={(e) => getCocktailsByGenre(e.target.value)} className="select-container">
               <option value="">Select Genre:</option>
               <option value="vodka">Vodka</option>

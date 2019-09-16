@@ -14,10 +14,15 @@ export class Drink extends Component {
   }
 
   toggleFavorite = async (name) => {
-    const { favoriteCocktails, toggleFavorite } = this.props;
+    const { favoriteCocktails } = this.props;
     const targetCocktail = await fetchMoreDrinkInfo(name.name)
     let isPresent = favoriteCocktails.find(drink => drink.name === targetCocktail.name)
-    if(isPresent) {
+    this.toggleFavoriteLogic(targetCocktail, isPresent)
+  }
+
+  toggleFavoriteLogic = (targetCocktail, isPresent) => {
+    const { favoriteCocktails, toggleFavorite } = this.props;
+    if (isPresent) {
       let filteredCocktails = favoriteCocktails.filter(cocktail => cocktail.name !== targetCocktail.name)
       toggleFavorite(filteredCocktails)
     } else {
@@ -42,11 +47,11 @@ export class Drink extends Component {
   }
 }
 
-const mapStateToProps = ({ favoriteCocktails }) => ({
+export const mapStateToProps = ({ favoriteCocktails }) => ({
   favoriteCocktails
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   showSelectDrink: targetDrink => dispatch(showSelectDrink(targetDrink)),
   toggleFavorite: cocktails => dispatch(toggleFavorite(cocktails))
 });

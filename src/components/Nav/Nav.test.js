@@ -1,6 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Nav } from './Nav';
+import { Nav, mapDispatchToProps } from './Nav';
+import { fetchCocktailsBySearch } from '../../apiCalls/apiCalls';
+import { setCurrentCocktails } from '../../actions';
+
+jest.mock('../../apiCalls/apiCalls');
 
 describe('Nav', () => {
   let wrapper;
@@ -49,4 +53,62 @@ describe('Nav', () => {
     expect(wrapper.state('search')).toEqual('margarita')
     expect(wrapper.state('searchHasErrored')).toEqual('')
   })
+
+  describe('getCocktailsBySearch', () => {
+    it('should invoke fetchCocktailsBySearch', () => {
+      wrapper.instance().getCocktailsBySearch();
+
+      expect(fetchCocktailsBySearch).toHaveBeenCalled()
+    })
+
+    it('should invoke setCurrentCocktails if fetch is resolved and searchedCocktails is not null', () => {
+      fetchCocktailsBySearch.mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve()
+        });
+      });
+      wrapper.instance().getCocktailsBySearch();
+      expect(mockSetCurrentCocktails).toHaveBeenCalled()
+      expect(wrapper.state('search')).toEqual('')
+    });
+
+    it('should reset the search state', () => {
+      fetchCocktailsBySearch.mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve()
+        });
+      });
+      wrapper.instance().getCocktailsBySearch();
+      expect(wrapper.state('search')).toEqual('')
+    });
+
+    it('should return catch error if promise rejects (SAD)', () => {
+      fetchCocktailsBySearch.mockImplementation(() => {
+        return Promise.reject({
+          message: 'Server is down'
+        })
+      });
+      expect(wrapper.instance().getCocktailsBySearch()).rejects.toEqual(Error('Server is down'));
+    });
+
+    it('should invoke getCocktailsByGenre onChange of select', () => {
+      const mockEvent = { target: { value: 'vodka' }};
+      wrapper.find('select').simulate('change', mockEvent);
+      expect(mockGetCocktailsByGenre).toHaveBeenCalledWith('vodka');;
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch with an setCurrentCocktails action', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = setCurrentCocktails([{ id: 1, name: 'Moscow Mule' }, { id: 2, name: 'Vodka Soda' }]);
+
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.setCurrentCocktails([{ id: 1, name: 'Moscow Mule' }, { id: 2, name: 'Vodka Soda' }]);
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
 })

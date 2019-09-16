@@ -22,7 +22,6 @@ export class GameBoard extends Component {
   componentDidMount = async () => {
     try {
       const allIngredients = await fetchAllIngredients();
-      console.log(allIngredients)
       this.setState({ allIngredients: allIngredients })
     } catch (error) {
       throw new Error(error.message)
@@ -114,7 +113,7 @@ export class GameBoard extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   toggleFavorite: (cocktails) => dispatch(toggleFavorite(cocktails))
 })
 

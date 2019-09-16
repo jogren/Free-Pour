@@ -9,33 +9,6 @@ exports[`GameBoard should take a snapshot when passed the correct data 1`] = `
     Moscow Mules
     ?
   </h3>
-  <GameBoardContainer
-    currentDrink={
-      Object {
-        "glass": "Copper Mug",
-        "image": "image2.png",
-        "ingredients": Array [
-          Object {
-            "guessed": false,
-            "ingredient": "Vodka",
-            "measure": "2-3 oz",
-          },
-          Object {
-            "guessed": false,
-            "ingredient": "Ginger Ale",
-            "measure": "5oz",
-          },
-          Object {
-            "guessed": false,
-            "ingredient": "Lime Juice",
-            "measure": "2tbsp",
-          },
-        ],
-        "instructions": "Combine ingredients...",
-        "name": "Moscow Mules",
-      }
-    }
-  />
   <section
     className="Board_section-ingredients"
   >
@@ -91,6 +64,33 @@ exports[`GameBoard should take a snapshot when passed the correct data 1`] = `
       Submit Guess
     </button>
   </section>
+  <GameBoardContainer
+    currentDrink={
+      Object {
+        "glass": "Copper Mug",
+        "image": "image2.png",
+        "ingredients": Array [
+          Object {
+            "guessed": false,
+            "ingredient": "Vodka",
+            "measure": "2-3 oz",
+          },
+          Object {
+            "guessed": false,
+            "ingredient": "Ginger Ale",
+            "measure": "5oz",
+          },
+          Object {
+            "guessed": false,
+            "ingredient": "Lime Juice",
+            "measure": "2tbsp",
+          },
+        ],
+        "instructions": "Combine ingredients...",
+        "name": "Moscow Mules",
+      }
+    }
+  />
   <NavLink
     to="/"
   >

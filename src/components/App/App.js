@@ -73,7 +73,7 @@ export const mapStateToProps = ({ selectedDrink, currentCocktails, favoriteCockt
   favoriteCocktails
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   hideSelectedDrink: () => dispatch(hideSelectedDrink()),
   setCurrentCocktails: cocktails => dispatch(setCurrentCocktails(cocktails))
 });

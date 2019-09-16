@@ -22,7 +22,6 @@ export class GameBoard extends Component {
   componentDidMount = async () => {
     try {
       const allIngredients = await fetchAllIngredients();
-      console.log(allIngredients)
       this.setState({ allIngredients: allIngredients })
     } catch (error) {
       throw new Error(error.message)
@@ -83,8 +82,7 @@ export class GameBoard extends Component {
     return (
       <main className="GameBoard_main">
         <h3>Can you guess what's in a {favoriteCocktails[roundCounter].name}?</h3>
-        <GameBoardContainer currentDrink={favoriteCocktails[this.state.roundCounter]}/>
-        <section className="Board_section-ingredients">
+        <form className="Board_section-ingredients">
           <input 
             className="GameBoard_input"
             type="text"
@@ -96,7 +94,8 @@ export class GameBoard extends Component {
           />
           <datalist id="ingredient-list">{ingredientList}</datalist>
           <button onClick={this.handleSubmitGuess} disabled={!this.state.ingredientSearch}>Submit Guess</button>
-        </section>
+        </form>
+        <GameBoardContainer currentDrink={favoriteCocktails[this.state.roundCounter]}/>
         <NavLink to="/">
           <button className="button-home" onClick={this.resetGame}>Back to Home Page</button>
         </NavLink>
@@ -114,7 +113,7 @@ export class GameBoard extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   toggleFavorite: (cocktails) => dispatch(toggleFavorite(cocktails))
 })
 

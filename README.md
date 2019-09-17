@@ -1,6 +1,6 @@
 # Free Pour
 
-Free Pour is an app designed for bartenders wishing to level up their cocktail knowledge. The app provides a tasteful UI for users to search through a database of hundreds of cocktails, clicking for more information, including glass type, ingredients, and instructions. When a cocktail is favorited, the user to prompted to quiz themselved by guessing the cocktails main ingredients and their measuring amounts.
+Free Pour is an app designed for bartenders wishing to level up their cocktail knowledge. The app provides a tasteful UI for users to search through a database of hundreds of cocktails, clicking for more information, including glass type, ingredients, and instructions. When a cocktail is favorited, the user to prompted to quiz themselved by guessing the cocktail's main ingredients and their measuring amounts.
 
 ### Getting Started
 

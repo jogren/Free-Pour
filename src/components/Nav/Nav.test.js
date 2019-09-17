@@ -56,41 +56,45 @@ describe('Nav', () => {
 
   describe('getCocktailsBySearch', () => {
     it('should invoke fetchCocktailsBySearch', () => {
-      wrapper.instance().getCocktailsBySearch();
-
+      const mockEvent = { preventDefault: jest.fn() }
+      wrapper.instance().getCocktailsBySearch(mockEvent);
+      wrapper.instance().forceUpdate();
       expect(fetchCocktailsBySearch).toHaveBeenCalled()
     })
 
     it('should invoke setCurrentCocktails if fetch is resolved and searchedCocktails is not null', () => {
+      const mockEvent = { preventDefault: jest.fn() }
       fetchCocktailsBySearch.mockImplementation(() => {
         return Promise.resolve({
           ok: true,
           json: () => Promise.resolve()
         });
       });
-      wrapper.instance().getCocktailsBySearch();
+      wrapper.instance().getCocktailsBySearch(mockEvent);
       expect(mockSetCurrentCocktails).toHaveBeenCalled()
       expect(wrapper.state('search')).toEqual('')
     });
 
     it('should reset the search state', () => {
+      const mockEvent = { preventDefault: jest.fn() }
       fetchCocktailsBySearch.mockImplementation(() => {
         return Promise.resolve({
           ok: true,
           json: () => Promise.resolve()
         });
       });
-      wrapper.instance().getCocktailsBySearch();
+      wrapper.instance().getCocktailsBySearch(mockEvent);
       expect(wrapper.state('search')).toEqual('')
     });
 
     it('should return catch error if promise rejects (SAD)', () => {
+      const mockEvent = { preventDefault: jest.fn() }
       fetchCocktailsBySearch.mockImplementation(() => {
         return Promise.reject({
           message: 'Server is down'
         })
       });
-      expect(wrapper.instance().getCocktailsBySearch()).rejects.toEqual(Error('Server is down'));
+      expect(wrapper.instance().getCocktailsBySearch(mockEvent)).rejects.toEqual(Error('Server is down'));
     });
 
     it('should invoke getCocktailsByGenre onChange of select', () => {

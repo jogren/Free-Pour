@@ -9,7 +9,7 @@ exports[`GameBoard should take a snapshot when passed the correct data 1`] = `
     Moscow Mules
     ?
   </h3>
-  <section
+  <form
     className="Board_section-ingredients"
   >
     <input
@@ -63,7 +63,7 @@ exports[`GameBoard should take a snapshot when passed the correct data 1`] = `
     >
       Submit Guess
     </button>
-  </section>
+  </form>
   <GameBoardContainer
     currentDrink={
       Object {

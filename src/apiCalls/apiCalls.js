@@ -52,7 +52,6 @@ export const fetchAllIngredients = async () => {
       throw new Error('There was an issue fetching all ingredients')
     }
     const ingredients = await response.json();
-    console.log(ingredients)
     return ingredients.drinks.map(drink => drink.strIngredient1)
   } catch(error) {
     throw new Error(error.message)

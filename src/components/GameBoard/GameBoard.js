@@ -28,8 +28,7 @@ export class GameBoard extends Component {
     }
   }
 
-  handleSubmitGuess = (e) => {
-    e.preventDefault();
+  handleSubmitGuess = () => {
     let { roundCounter, ingredientSearch } = this.state;
     const { favoriteCocktails } = this.props;
     let isCorrect = favoriteCocktails[roundCounter].ingredients.find(ingredient => {
@@ -43,8 +42,8 @@ export class GameBoard extends Component {
       this.setState({ wrongAnswerError: 'wrong' })
       setTimeout(() => { this.setState({ wrongAnswerError: '' }) }, 500);
     }
-    let allTrue = favoriteCocktails[roundCounter].ingredients.every(ingredient => ingredient.guessed || ingredient.ingredient === '')
-    if (allTrue && roundCounter + 1 >= favoriteCocktails.length) {
+    let allTrue = favoriteCocktails[roundCounter].ingredients.every(ingredient => ingredient.guessed || ingredient.ingredient === null)
+    if (allTrue && roundCounter + 1 === favoriteCocktails.length) {
       this.state.roundFinished = true
     } else if (allTrue) {
       this.state.roundCounter++
@@ -79,14 +78,11 @@ export class GameBoard extends Component {
 
   render() {
     const { favoriteCocktails } = this.props;
-    const { roundCounter, ingredientSearch, allIngredients } = this.state;
+    const { roundCounter, ingredientSearch, allIngredients, roundFinished, wrongAnswerError } = this.state;
     let addMoreIngredientOptions = [...allIngredients, 'Coca-Cola', 'Olive', 'Soda Water', 'Cherry', 'Mint', 'Blue Curacao', 'Angostura Bitters', 'Campari']
     let ingredientList = addMoreIngredientOptions.map((ingredient, index) => {
       return <option key={index} value={ingredient}/>
     })
-    console.log(favoriteCocktails)
-    console.log(roundCounter)
-    console.log(favoriteCocktails[roundCounter].name)
     return (
       <main className="GameBoard_main">
         <h3>Can you guess what's in a {favoriteCocktails[roundCounter].name}?</h3>
@@ -107,7 +103,7 @@ export class GameBoard extends Component {
         <NavLink to="/">
           <button className="button-home" onClick={this.resetGame}>Back to Home Page</button>
         </NavLink>
-        {this.state.roundFinished && (
+        {roundFinished && (
           <div className="div-round-finished">
             <h4>Congrats! You reviewed all of your favorites!</h4> 
             <NavLink to="/">
@@ -115,7 +111,7 @@ export class GameBoard extends Component {
             </NavLink>
           </div>
         )}
-        {this.state.wrongAnswerError && <img src={wrongAnswerImage} className="wrong-answer-error"/> }
+        {wrongAnswerError && <img src={wrongAnswerImage} className="wrong-answer-error"/> }
       </main>
     )
   }

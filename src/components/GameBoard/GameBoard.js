@@ -28,10 +28,15 @@ export class GameBoard extends Component {
     }
   }
 
-  handleSubmitGuess = () => {
+  handleSubmitGuess = (e) => {
+    e.preventDefault();
     let { roundCounter, ingredientSearch } = this.state;
     const { favoriteCocktails } = this.props;
-    let isCorrect = favoriteCocktails[roundCounter].ingredients.find(ingredient => ingredient.ingredient.toLowerCase().includes(ingredientSearch.toLowerCase()))
+    let isCorrect = favoriteCocktails[roundCounter].ingredients.find(ingredient => {
+      if (ingredient.ingredient !== null) {
+        return ingredient.ingredient.toLowerCase().includes(ingredientSearch.toLowerCase())
+      }
+    })
     if(isCorrect) {
       isCorrect.guessed = true
     } else {
@@ -79,6 +84,9 @@ export class GameBoard extends Component {
     let ingredientList = addMoreIngredientOptions.map((ingredient, index) => {
       return <option key={index} value={ingredient}/>
     })
+    console.log(favoriteCocktails)
+    console.log(roundCounter)
+    console.log(favoriteCocktails[roundCounter].name)
     return (
       <main className="GameBoard_main">
         <h3>Can you guess what's in a {favoriteCocktails[roundCounter].name}?</h3>
